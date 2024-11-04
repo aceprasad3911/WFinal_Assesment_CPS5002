@@ -3,5 +3,10 @@
 # #   20% chance of creating a gatherer bot (costs 30% energy from each bot).
 # #   5% chance of creating a repair bot (costs 50% energy from each bot).
 
-class RepairBot:
-    pass
+from survivor_bot import SurvivorBot
+
+
+class RepairBot(SurvivorBot):
+    def __init__(self):
+        super().__init__()
+        print("A new Repair Bot has been created!")
