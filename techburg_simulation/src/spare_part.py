@@ -11,3 +11,6 @@
 #   Medium parts by 2%.
 #   Large parts by 3%.
 #   Parts are removed from the grid upon being consumed.
+
+class SparePart:
+    pass

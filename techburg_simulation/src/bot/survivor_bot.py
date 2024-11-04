@@ -6,3 +6,6 @@
 # - Carrying and Collecting:
 #   Bots can carry only one part at a time.
 #   Prioritize larger parts when selecting.
+
+class SurvivorBot:
+    pass
