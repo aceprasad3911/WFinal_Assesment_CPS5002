@@ -38,7 +38,7 @@
 # ├── README.md                    # Project overview and setup instructions
 # ├── .gitignore                   # Files and directories to ignore in version control
 # └── setup.py                     # Setup script for packaging the project
-
+# ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------#
 # Notes:
 # src/: This is where all the source code for your simulation will reside. Organizing your code into modules and classes will help you adhere to object-oriented design principles.
 # tests/: This directory contains unit tests for your project. Using a testing framework (like unittest or pytest) will help ensure that your code is reliable and maintainable.
