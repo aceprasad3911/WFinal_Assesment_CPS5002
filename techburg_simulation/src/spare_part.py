@@ -12,5 +12,12 @@
 #   Large parts by 3%.
 #   Parts are removed from the grid upon being consumed.
 
+# Responsibilities:
+# Represents spare parts with attributes like size and enhancement value.
+
+# Interactions:
+# Bots interact with this class to collect and use parts.
+# Recharge stations manage the storage and recharging of parts.
+
 class SparePart:
     pass

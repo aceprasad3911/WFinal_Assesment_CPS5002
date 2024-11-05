@@ -1,6 +1,17 @@
-import bot
-import grid
-import cell
+# Responsibilities:
+# Initialize the simulation.
+# Set up the grid, populate it with cells, bots, recharge stations, drones, and spare parts.
+# Run the simulation loop.
+
+# Interactions:
+# Imports the Simulation class from simulation.py to manage the overall simulation logic.
+# Uses Grid from grid.py to create the grid structure.
+# Initializes SurvivorBot, RepairBot, GathererBot, RechargeStation, Drone, and ScavengerSwarm as needed.
+
+# main.py
+from grid import Grid  # Import the Grid class from grid.py
+
 
 if __name__ == "__main__":
-    pass
+    grid = Grid(techburg_grid_size=40, techburg_cell_size=15)  # Create an instance of Grid
+

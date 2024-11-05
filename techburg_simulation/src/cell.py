@@ -1,26 +1,31 @@
-# cell.py
+
+
+# Responsibilities:
+# Represents individual cells in the grid.
+# Holds references to the objects (e.g., bots, parts) present in that cell.
+
+# Interactions:
+# Provides methods to add and remove objects from the cell.
+# Interacts with Grid to update its state.
 
 class Cell:
-    def __init__(self, cell_type=None):
-        self.cell_type = cell_type  # Type of the cell (e.g., 'empty', 'spare_part', 'survivor_bot', etc.)
-        self.color = self.get_color()  # Color representation based on cell type
+    def __init__(self, content="empty"):
+        self.content = content
+        self.emoji = self.get_emoji(content)
 
-    def get_color(self):
-        # Define colors based on cell type
-        if self.cell_type == 'empty':
-            return 'gray'
-        elif self.cell_type == 'spare_part':
-            return 'blue'
-        elif self.cell_type == 'survivor_bot':
-            return 'green'
-        elif self.cell_type == 'recharge_station':
-            return 'yellow'
-        elif self.cell_type == 'malfunctioning_drone':
-            return 'red'
-        elif self.cell_type == 'scavenger_swarm':
-            return 'purple'
-        else:
-            return 'white'
+    def get_emoji(self, content):
+        """Return the corresponding emoji for the cell's content."""
+        emoji_map = {
+            "empty": "",  # Empty space
+            "spare_parts": "🔧",  # Spare parts
+            "survivor_bot": "🤖",  # Survivor bot
+            "recharge_station": "🔋",  # Recharge station
+            "malfunctioning_drone": "🚁",  # Malfunctioning drone
+            "scavenger_swarm": "🐝"  # Scavenger swarm
+        }
+        return emoji_map.get(content, "❓")  # Default emoji for unknown content
 
-    def __repr__(self):
-        return f"Cell(type={self.cell_type})"
+    def set_content(self, content):
+        """ Set the content of the cell and update the emoji."""
+        self.content = content
+        self.emoji = self.get_emoji(content)
