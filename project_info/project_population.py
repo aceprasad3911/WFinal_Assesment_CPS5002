@@ -1,10 +1,10 @@
-# grid.py:
+# grid.py: In Progress
 # Start with the Grid class, as it will likely serve as the backbone of your simulation. The grid will define the environment in which your cells and bots operate. Establishing the grid's structure and behavior first will provide a framework for the other components.
 
-# cell.py:
+# cell.py: Completed
 # Next, implement the Cell class. Each cell will represent an individual unit within the grid, and its behavior may depend on the grid's structure. Having the Cell class ready will allow you to populate the grid with cells.
 
-# bot/ Directory:
+# bot/ Directory: In Progres
 # After the grid and cell classes are in place, you can start working on the bot classes. You might want to begin with the base class, survivor_bot.py, since other bot classes (like repair_bot.py and gatherer_bot.py) will likely inherit from it. This will allow you to establish common functionality for all bots.
 
 # recharge_station.py:

@@ -1,6 +1,10 @@
-import tkinter as tk  # Import the tkinter library for GUI creation
-from cell import Cell  # Import the Cell class from cell.py
-import random
+# grid.py
+import tkinter as tk
+from cell import Cell
+from techburg_simulation.src.bots.survivor_bot import SurvivorBot
+from techburg_simulation.src.bots.repair_bot import RepairBot
+from techburg_simulation.src.bots.gatherer_bot import GathererBot
+
 
 class Grid:
     def __init__(self, techburg_grid_size=20, techburg_cell_size=15):
@@ -10,8 +14,12 @@ class Grid:
         self.root = tk.Tk()
         self.canvas = tk.Canvas(self.root, width=techburg_grid_size * techburg_cell_size, height=techburg_grid_size * techburg_cell_size)
         self.canvas.pack()
+        # Place bots, stations and parts here
+        self.survivor_bot = SurvivorBot(self, 20, 20)  # Place the bot at (20, 20)
+        self.gatherer_bot = GathererBot(self, 30, 30)
+        self.repair_bot = RepairBot(self, 10, 10)
         self.update_display()  # Initial display update to show the grid
-        self.root.after(100, self.recurring_update)  # Schedule the first update
+        self.root.after(1000, self.recurring_update)  # Schedule the first update
         self.root.mainloop()
 
     def wrap(self, row, col):
@@ -38,20 +46,12 @@ class Grid:
     def set_cell(self, row, col, content):
         cell = self.get_cell(row, col)
         cell.set_content(content)
-        self.update_display()
+        self.update_display()  # This should refresh the display
 
     def recurring_update(self):
-        # Here you can put any logic that modifies the grid
-        # For example, you might want to change the content of a cell periodically
-        # This is just an example where we change a random cell to 'spare_parts'
-        random_row = random.randint(0, self.grid_size - 1)
-        random_col = random.randint(0, self.grid_size - 1)
-        self.set_cell(random_row, random_col, 'spare_parts')  # Change a random cell to spare_parts
-        self.set_cell(20, 20, 'survivor_bot')
-        # Schedule the next update
-        self.root.after(1000, self.recurring_update)  # Call this function again after 1000 ms (1 second)
-
-# Example usage:
-# grid = Grid()
-# grid.set_cell(0, 0, 'Bot', 'emoji')  # Set the cell at (0, 0) with value 'Bot' and 'emoji'
-# print(grid.get_cell(0, 0).value)  # Retrieve the value of the cell at (0, 0)
+        # make sure all bots, stations and parts that are initialized are then set to act here
+        self.survivor_bot.act()  # Allow the survivor bot to act
+        self.gatherer_bot.act()  # Allow the survivor bot to act
+        self.repair_bot.act()  # Allow the survivor bot to act
+        self.update_display()  # Update the display after the bot acts
+        self.root.after(1000, self.recurring_update)  # Schedule the next update

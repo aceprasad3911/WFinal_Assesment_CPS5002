@@ -7,6 +7,8 @@
 # Interactions:
 # Provides methods to add and remove objects from the cell.
 # Interacts with Grid to update its state.
+# cell.py
+
 
 class Cell:
     def __init__(self, content="empty"):
@@ -19,13 +21,15 @@ class Cell:
             "empty": "",  # Empty space
             "spare_parts": "🔧",  # Spare parts
             "survivor_bot": "🤖",  # Survivor bot
+            "repair_bot": "⛑️",  # Survivor bot
+            "gatherer_bot": "🪣",  # Survivor bot
             "recharge_station": "🔋",  # Recharge station
             "malfunctioning_drone": "🚁",  # Malfunctioning drone
             "scavenger_swarm": "🐝"  # Scavenger swarm
         }
-        return emoji_map.get(content, "❓")  # Default emoji for unknown content
+        return emoji_map.get(content, "")  # Default emoji for unknown content
 
     def set_content(self, content):
-        """ Set the content of the cell and update the emoji."""
+        """Set the content of the cell and update the emoji."""
         self.content = content
         self.emoji = self.get_emoji(content)
