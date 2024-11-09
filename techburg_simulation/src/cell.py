@@ -10,6 +10,7 @@
 # cell.py
 
 
+
 class Cell:
     def __init__(self, content="empty"):
         self.content = content
@@ -30,6 +31,5 @@ class Cell:
         return emoji_map.get(content, "")  # Default emoji for unknown content
 
     def set_content(self, content):
-        """Set the content of the cell and update the emoji."""
         self.content = content
         self.emoji = self.get_emoji(content)
