@@ -11,5 +11,23 @@
 # Interacts with SurvivorBot to recharge their energy.
 # Provides methods to store and retrieve SparePart objects.
 
+# recharge_station.py
+
 class RechargeStation:
-    pass
+    def __init__(self, grid, row, col):
+        self.grid = grid
+        self.__location = [row, col]
+        self.grid.set_cell(row, col, 'recharge_station')
+        for dr in [-1, 0, 1]:
+            for dc in [-1, 0, 1]:
+                if dr != 0 or dc != 0:  # Skip the center cell
+                    self.grid.set_cell(row + dr, col + dc, 'recharge_station_perimeter')  # Set perimeter
+
+    def _capacity(self):
+        pass
+
+    def _storage(self):
+        pass
+
+    def _info_transfer(self):
+        pass

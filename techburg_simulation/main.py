@@ -1,3 +1,6 @@
+# main.py: Finally, develop this file to serve as the entry point for your program.
+# It will import necessary modules and start the simulation.
+
 # Responsibilities:
 # Initialize the simulation.
 # Set up the grid, populate it with cells, bots, recharge stations, drones, and spare parts.

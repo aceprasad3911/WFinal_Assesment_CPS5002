@@ -21,3 +21,6 @@ class RepairBot(SurvivorBot):
         # Define the action method for the RepairBot.
         # This method will be called to perform the bot's actions during each simulation step.
         self._move('repair_bot')  # Call the move method with the specific bot type
+
+    def _create_bot(self):
+        pass

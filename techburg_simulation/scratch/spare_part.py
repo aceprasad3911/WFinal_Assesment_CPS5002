@@ -20,4 +20,8 @@
 # Recharge stations manage the storage and recharging of parts.
 
 class SparePart:
-    pass
+    def __init__(self, grid, row, col):
+        self.grid = grid
+        self.__location = [row, col]
+        self.grid.set_cell(row, col, 'recharge_station')
+

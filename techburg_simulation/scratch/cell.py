@@ -9,7 +9,7 @@
 # Interacts with Grid to update its state.
 # cell.py
 
-
+# cell.py
 
 class Cell:
     def __init__(self, content="empty"):
@@ -22,8 +22,8 @@ class Cell:
             "empty": "",  # Empty space
             "spare_parts": "🔧",  # Spare parts
             "survivor_bot": "🤖",  # Survivor bot
-            "repair_bot": "⛑️",  # Survivor bot
-            "gatherer_bot": "🪣",  # Survivor bot
+            "repair_bot": "⛑️",  # Repair bot
+            "gatherer_bot": "🪣",  # Gatherer bot
             "recharge_station": "🔋",  # Recharge station
             "malfunctioning_drone": "🚁",  # Malfunctioning drone
             "scavenger_swarm": "🐝"  # Scavenger swarm

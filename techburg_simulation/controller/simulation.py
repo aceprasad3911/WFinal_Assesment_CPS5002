@@ -1,3 +1,6 @@
+# simulation.py: Create this file to handle the main simulation logic, including the
+# simulation loop and the update of agent states. This will tie together the environment and agents.
+
 # Simulation Parameters:
 # - Starting Conditions: Begin with a populated grid including recharge stations, survivor bots, spare parts, drones, and scavenger swarms.
 # - End Conditions: Simulation ends when all spare parts are collected or corroded, or all survivor bots are eliminated without possibility of replication.
