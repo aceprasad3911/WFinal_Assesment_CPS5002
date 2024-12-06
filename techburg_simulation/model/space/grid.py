@@ -1,4 +1,4 @@
-class Techburg(Environment):
+class Grid(Environment):
     """
     Represents an ocean environment.
     """

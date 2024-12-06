@@ -2,16 +2,6 @@
 # (using the Location class) and the overall simulation state. This class will handle the placement of
 # agents and other entities in the grid.
 
-from __future__ import annotations
-
-from abc import ABC, abstractmethod
-from typing import TYPE_CHECKING
-
-if TYPE_CHECKING:
-    from model.agent import Agent
-    from model.location import Location
-
-
 class Environment(ABC):
     """
     Abstract base class representing an environment.

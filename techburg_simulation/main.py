@@ -12,7 +12,7 @@
 # Initializes SurvivorBot, RepairBot, GathererBot, RechargeStation, Drone, and ScavengerSwarm as needed.
 
 # main.py
-from grid import Grid
+
 
 if __name__ == "__main__":
-    grid = Grid(techburg_grid_size=40, techburg_cell_size=15)  # Create an instance of Grid
+    pass

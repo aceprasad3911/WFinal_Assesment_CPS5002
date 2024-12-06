@@ -2,7 +2,6 @@
 # that all agent types (e.g., survivor bots, drones, scavenger swarms) will inherit from.
 
 from abc import ABC, abstractmethod
-from week_5.model.location import Location
 
 
 class Agent(ABC):

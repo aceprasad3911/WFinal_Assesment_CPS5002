@@ -56,10 +56,8 @@ class Gui(tk.Tk):
                 agent = self.__environment.get_agent(Location(col_index, row_index))
 
                 # TODO: Set the current agent colour
-                agent_colour = self.__agent_colours[agent.__class__]
 
                 # TODO: Create a new Canvas object with appropriate attributes (width, height, background colour, border width, relief set to "solid")
-                tk.Canvas(width=, height=, background=, borderwidth=, relief="solid")
 
                 # TODO: Add the cell to the grid
 
