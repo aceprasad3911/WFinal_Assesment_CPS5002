@@ -8,30 +8,40 @@ GRID_SIZE = 50  # Techburg grid size (50x50 cells)
 # Initial Agent Counts
 INITIAL_COUNTS = {
     "recharge_stations": 3,
-    "repbots": 3,
-    "gathrbots": 2,
-    "scavbots": 4,
+    "repair_bots": 3,
+    "gatherer_bots": 2,
+    "scavenger_bots": 4,
     "drones": 10,
     "spare_parts": 20
 }
 
-# Bot Energy Values
-INITIAL_BOT_ENERGY = 100
-SBOT_MAX_ENERGY = 100
-SBOT_EAT_THRESHOLD = 5
-SBOT_MIN_ENERGY = 0
-SBOT_MAX_MOVEMENT = 1
-SBOT_MIN_MOVEMENT = 0
-SBOT_MAX_VISION = 3
-SBOT_MIN_VISION = 1
+# Bot MIN/MAX Values
+BOT_INITIAL_ENERGY = 100
+BOT_MAX_ENERGY = 100
+BOT_MIN_ENERGY = 0
+BOT_INITIAL_HEALTH = 100
+BOT_MAX_HEALTH = 100
+BOT_MIN_HEALTH = 0
+BOT_INITIAL_MOVEMENT = 0.5
+BOT_MAX_MOVEMENT = 1
+BOT_MIN_MOVEMENT = 0
+BOT_INITIAL_VISION = 1
+BOT_MAX_VISION = 3
+BOT_MIN_VISION = 1
 
 # Movement and Vision Rates
-SBOT_MOVEMENT_ENERGY_COST = -5  # Energy cost per movement
-SBOT_RECHARGE_RATE = 1  # (1% Energy per loop)
-SBOT_STANDARD_MOVEMENT_RATE = 0.5  # (1 square per 2 loops)
-SBOT_CURRENT_MOVEMENT_RATE = SBOT_STANDARD_MOVEMENT_RATE
-SBOT_STANDARD_VISION_RANGE = 1  # (1 square perimeter)
-SBOT_CURRENT_VISION_RANGE = SBOT_STANDARD_VISION_RANGE
+BOT_MOVEMENT_ENERGY_COST = -5  # Energy cost per movement
+BOT_RECHARGE_RATE = 1  # (1% Energy per loop)
+BOT_STANDARD_MOVEMENT_RATE = 0.5  # (1 square per 2 loops)
+BOT_CURRENT_MOVEMENT_RATE = BOT_STANDARD_MOVEMENT_RATE
+BOT_STANDARD_VISION_RANGE = 1  # (1 square perimeter)
+BOT_CURRENT_VISION_RANGE = BOT_STANDARD_VISION_RANGE
+
+# Movement and Vision Rates
+BOT_STATUSES = {"healthy", "hurt", "sleepy", "resting", "charging"}
+BOT_TYPES = {"repair_bot", "gatherer_bot", "TBC"}
+BOT_CARRY_STATUS = {"hands_full", "hands_empty"}
+BOT_APPETITE = {"starving", "hungry", "normal", "full"}
 
 # Bot Energy Costs and Reproduction Probabilities
 BOT_ENERGY_COSTS = {

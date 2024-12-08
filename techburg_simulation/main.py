@@ -11,8 +11,15 @@
 # Uses Grid from grid.py to create the grid structure.
 # Initializes SurvivorBot, RepairBot, GathererBot, RechargeStation, Drone, and ScavengerSwarm as needed.
 
-# main.py
+from techburg_simulation.controller.simulation import Simulator
+
+
+def main():
+    # Create an instance of the Simulator
+    simulation = Simulator()
+    # Run the simulation
+    simulation.run()
 
 
 if __name__ == "__main__":
-    pass
+    main()

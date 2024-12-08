@@ -1,35 +1,38 @@
-# grid.py: In Progress
-# Start with the Grid class, as it will likely serve as the backbone of your simulation. The grid will define the environment in which your cells and bots operate. Establishing the grid's structure and behavior first will provide a framework for the other components.
+# Configuration (config.py)
+# Develop: Define all constants and configuration settings.
+# Test: Ensure that the values are correctly defined and accessible.
 
-# cell.py: Completed
-# Next, implement the Cell class. Each cell will represent an individual unit within the grid, and its behavior may depend on the grid's structure. Having the Cell class ready will allow you to populate the grid with cells.
+# Location (location.py)
+# Develop: Implement the Location class with all necessary methods.
+# Test: Create unit tests to verify that the location coordinates can be set and retrieved correctly, and that equality checks work as expected.
 
-# bot/ Directory: In Progres
-# After the grid and cell classes are in place, you can start working on the bot classes. You might want to begin with the base class, survivor_bot.py, since other bot classes (like repair_bot.py and gatherer_bot.py) will likely inherit from it. This will allow you to establish common functionality for all bots.
+# Utilities (utility.py)
+# Develop: Implement utility functions (e.g., random location generation, logging).
+# Test: Write tests for utility functions to ensure they return expected results.
 
-# recharge_station.py:
-# Implement the RechargeStation class next. This component may interact with the bots, so having it ready will help you define how bots recharge and interact with the environment.
+# Abstract Agent (abstract_agent.py)
+# Develop: Create the abstract Agent class with common attributes and methods.
+# Test: Verify that the abstract class cannot be instantiated and that subclasses must implement the act method.
 
-# drone.py:
-# If the drone is a significant part of your simulation, implement it next. This class may have specific behaviors that interact with the grid and other components.
+# Environment (environment.py)
+# Develop: Implement the Environment abstract class and the Grid class.
+# Test: Write tests for the grid's ability to set and get agents, clear the grid, and find free locations.
 
-# scavenger_swarm.py:
-# After the main components are in place, you can implement the ScavengerSwarm class, which may depend on the grid and bot classes.
+# Specific Agent Classes (bots_mc.py)
+# Develop: Start with one specific agent class (e.g., SurvivorBot).
+# Test: Implement the act method and test the agent's behavior in isolation.
 
-# spare_part.py:
-# Implement the SparePart class, which may be used by bots or other components in the simulation.
+# Simulation (simulation.py)
+# Develop: Implement the Simulator class, including the simulation loop and methods for updating and rendering.
+# Test: Test the simulation loop with a simple setup to ensure agents can act and the simulation can run without errors.
 
-# simulation.py:
-# Once the core components are implemented, you can work on the Simulation class. This class will likely orchestrate the interactions between all the components, so it’s best to do this after the foundational classes are ready.
+# Main Entry Point (main.py)
+# Develop: Set up the main entry point to initialize the simulation and start it.
+# Test: Run the simulation to ensure that everything integrates correctly and that the simulation starts as expected.
 
-# utils.py:
-# Finally, implement any utility functions that may be needed throughout your code. These can be added as you identify specific needs during development.
+# Integration Testing
+# After developing and testing individual components, conduct integration tests to ensure that all parts of the simulation work together as intended. This includes checking interactions between agents, the environment, and the simulation loop.
 
-# main.py:
-# After the core functionality is in place, you can implement the main.py file, which will serve as the entry point for running your simulation.
-
-# Testing Files:
-# As you develop each component, consider writing corresponding tests in the tests/ directory. This will help ensure that each part of your simulation works as expected.
-
-# Documentation:
-# As you code, keep your documentation up to date. This will help you and others understand the project as it evolves.
+# GUI Development (if applicable)
+# If you plan to implement a graphical user interface (GUI), develop it after the core simulation logic is in place. This allows you to visualize the simulation effectively.
+# Test the GUI to ensure it correctly represents the state of the simulation and responds to user inputs.

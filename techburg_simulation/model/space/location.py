@@ -1,79 +1,26 @@
-# location.py: Next, create this file to define the Location class that will represent each cell in the grid.
-# This class can hold information about what is in each cell (e.g., spare parts, bots, recharge stations, etc.).
-
+# location.py
 class Location:
-    """
-    Represents a point in 2D space.
-
-    Attributes:
-        __x (int): The x-coordinate of the location.
-        __y (int): The y-coordinate of the location.
-    """
-
     def __init__(self, x: int, y: int) -> None:
-        """
-        Initialises a Location object with given x and y coordinates.
+        if not isinstance(x, int) or not isinstance(y, int):
+            raise ValueError("Coordinates must be integers.")
+        if x < 0 or y < 0:
+            raise ValueError("Coordinates must be non-negative.")
 
-        Args:
-            x (int): The x-coordinate of the location.
-            y (int): The y-coordinate of the location.
-        """
         self.__x = x
         self.__y = y
 
     def get_x(self) -> int:
-        """
-        Gets the x-coordinate of the location.
-
-        Returns:
-            int: The x-coordinate.
-        """
         return self.__x
 
     def get_y(self) -> int:
-        """
-        Gets the y-coordinate of the location.
-
-        Returns:
-            int: The y-coordinate.
-        """
         return self.__y
 
     def set_x(self, new_x: int) -> None:
-        """
-        Sets the x-coordinate of the location.
-
-        Args:
-            new_x (int): The new x-coordinate.
-        """
+        if not isinstance(new_x, int) or new_x < 0:
+            raise ValueError("New x-coordinate must be a non-negative integer.")
         self.__x = new_x
 
     def set_y(self, new_y: int) -> None:
-        """
-        Sets the y-coordinate of the location.
-
-        Args:
-            new_y (int): The new y-coordinate.
-        """
+        if not isinstance(new_y, int) or new_y < 0:
+            raise ValueError("New y-coordinate must be a non-negative integer.")
         self.__y = new_y
-
-    def equals(self, other_location: 'Location') -> bool:
-        """
-        Checks if two locations are equal.
-
-        Args:
-            other_location (Location): The other location to compare.
-
-        Returns:
-            bool: True if the locations are equal, False otherwise.
-        """
-        return self.__x == other_location.get_x() and self.__y == other_location.get_y()
-
-    def __str__(self) -> str:
-        """
-        Returns a string representation of the location.
-
-        Returns:
-            str: A string representation of the location.
-        """
-        return f"({self.__x}, {self.__y})"

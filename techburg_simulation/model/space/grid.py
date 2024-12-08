@@ -1,44 +1,40 @@
+# grid.py
+from typing import List
+from techburg_simulation.model.objects.abstract_agent import Agent
+from techburg_simulation.model.space.environment import Environment
+from techburg_simulation.model.space.location import Location
+
 class Grid(Environment):
-    """
-    Represents an ocean environment.
-    """
-
     def __init__(self, width: int, height: int) -> None:
-        """
-        Initialises an Ocean object with the given width and height.
-
-        Args:
-            width (int): The width of the ocean grid.
-            height (int): The height of the ocean grid.
-        """
         super().__init__(width, height)
         self.__grid = [[None for _ in range(width)] for _ in range(height)]
 
     def clear(self):
-        """Clears the ocean by removing all agents."""
         self.__grid = [[None for _ in range(self.get_width())] for _ in range(self.get_height())]
 
-    def get_agent(self, location: Location):
-        """
-        Returns the agent at location in the ocean.
+    def clear_agent(self, location: Location):
+        """Clear the agent from the specified location."""
+        row = location.get_y()
+        col = location.get_x()
+        if 0 <= row < self.get_height() and 0 <= col < self.get_width():
+            self.__grid[row][col] = None  # Set the specific cell to None
 
-        Args:
-            location (Location): The location of the agent.
-
-        Returns:
-            Agent: The agent at location in the ocean.
-        """
+    def get_agent(self, location: Location) -> Agent:
         return self.__grid[location.get_y()][location.get_x()]
 
-    def set_agent(self, agent: Agent, location: Location):
-        """
-        Sets the agent at position in the ocean.
-
-        Args:
-            agent (Agent): The agent to set.
-            location (Location): The location to set the agent.
-        """
+    def set_agent(self, agent: Agent, location: Location) -> None:
         self.__grid[location.get_y()][location.get_x()] = agent
+
+    def is_within_bounds(self, location: Location) -> bool:
+        return 0 <= location.get_x() < self.get_width() and 0 <= location.get_y() < self.get_height()
+
+    def count_agents(self, agent_type: type) -> int:
+        count = 0
+        for row in self.__grid:
+            for cell in row:
+                if isinstance(cell, agent_type):
+                    count += 1
+        return count
 
     def find_free_locations(self, location: Location) -> List[Location]:
         x = location.get_x()
@@ -67,3 +63,12 @@ class Grid(Environment):
                     free_locations.append(Location(loc_x, loc_y))
 
         return free_locations
+
+    def handle_collisions(self):
+        """Check for collisions between agents and handle interactions."""
+        for y in range(self.get_height()):
+            for x in range(self.get_width()):
+                agent = self.__grid[y][x]
+                if agent is not None:
+                    # Implement collision logic here
+                    pass

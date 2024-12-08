@@ -73,8 +73,5 @@ class SurvivorBot:
         # #   Vision: Detects parts in adjacent cells; with 51–100% enhancement, bots detect two cells away, and up to three cells away with 101–150% enhancement. Maximum detection enhancement is 150%.
         pass
 
-    def _behaviour(self):
-        pass
-
     def act(self):
         self._move('survivor_bot')  # Public method to allow the bot to act (move)

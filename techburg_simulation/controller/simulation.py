@@ -11,41 +11,66 @@
 # Interactions:
 # Coordinates interactions between Grid, Bots, RechargeStation, Drone, and ScavengerSwarm.
 # Handles the simulation logic, including movement, energy depletion, and event handling.
-
+# simulation.py
 import time
+import random
+import techburg_simulation.controller.config
+from techburg_simulation.model.objects.gatherer_bot import GathererBot
+from techburg_simulation.model.objects.repair_bot import RepairBot
+from techburg_simulation.model.space.grid import Grid
+from techburg_simulation.model.space.location import Location
+from techburg_simulation.view.gui import Gui  # Import the GUI class
 
-from view.gui import Gui
 
-
+# simulation.py
 class Simulator:
-    """Class representing a simulator."""
-
     def __init__(self) -> None:
-        """
-        Initialise the Simulator object.
-
-        Initialises the environment, and generates the initial population of agents.
-        """
-        self.__ocean = Ocean()
+        self.__grid = Grid(techburg_simulation.controller.config.GRID_SIZE, techburg_simulation.controller.config.GRID_SIZE)
         self.__agents = []
         self.__generate_initial_population()
         self.__is_running = False
 
-        # TODO: Define a dictionary, agent_colours, containing colours for each agent (class name - colour string pairs)
-        # TODO: Initialise a new Gui object
-        # TODO: Render the Gui by invoking the appropriate method
+        # Define agent colors
+        self.__agent_colours = {
+            RepairBot: "red",
+            GathererBot: "green",
+            # Add colors for other bot types
+        }
+
+        # Initialize the GUI
+        self.__gui = Gui(self.__grid, self.__agent_colours)
+        self.__gui.render()  # Render the initial state of the GUI
 
     def __generate_initial_population(self) -> None:
-        """
-        Generate the initial population of agents.
-        """
-        # TODO: Generate the initial population
-        pass
+        """Generate the initial population of agents."""
+        for _ in range(techburg_simulation.controller.config.INITIAL_COUNTS["recharge_stations"]):
+            # Create and place recharge stations
+            pass  # Implement recharge station placement
+
+        for _ in range(techburg_simulation.controller.config.INITIAL_COUNTS["repair_bots"]):
+            location = self.__get_random_free_location()
+            agent = RepairBot(location, self.__grid)  # Pass the grid
+            self.__agents.append(agent)
+            self.__grid.set_agent(agent, location)
+
+        for _ in range(techburg_simulation.controller.config.INITIAL_COUNTS["gatherer_bots"]):
+            location = self.__get_random_free_location()
+            agent = GathererBot(location, self.__grid)  # Pass the grid
+            self.__agents.append(agent)
+            self.__grid.set_agent(agent, location)
+
+    def __get_random_free_location(self) -> Location:
+        """Get a random free location on the grid."""
+        while True:
+            x = random.randint(0, techburg_simulation.controller.config.GRID_SIZE - 1)
+            y = random.randint(0, techburg_simulation.controller.config.GRID_SIZE - 1)
+            location = Location(x, y)
+            if self.__grid.get_agent(location) is None:  # Check if the cell is free
+                return location
 
     def run(self) -> None:
         """Run the simulation."""
         self.__is_running = True
-
         while self.__is_running:
             self.__update()
             self.__render()
@@ -55,16 +80,14 @@ class Simulator:
 
     def __render(self) -> None:
         """Render the current state of the simulation."""
-        # TODO: Render the Gui by invoking the appropriate method
+        self.__gui.render()  # Call the render method of the GUI
 
     def __update(self) -> None:
         """Update the simulation state."""
-        # TODO: Invoke the act method for each agent
+        for agent in self.__agents:
+            agent.act()  # Invoke the act method for each agent
 
 
 if __name__ == "__main__":
-    """
-    Entry point for running the simulation.
-    """
     simulation = Simulator()
     simulation.run()
