@@ -4,8 +4,8 @@ from techburg_simulation.model.objects.abstract_agent3 import Agent
 
 
 class GathererBot(Agent):
-    def __init__(self, simulation, grid, x, y):
-        super().__init__(simulation, grid, x, y)  # Call the parent constructor
+    def __init__(self, simulation, grid, x, y, bot_id):
+        super().__init__(simulation, grid, x, y, bot_id)  # Call the parent constructor
         self.__bot_type = "gatherer_bot"
 
     def move(self):

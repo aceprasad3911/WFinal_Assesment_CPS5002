@@ -77,11 +77,16 @@ class GUI:
                 cell = self.grid[row][col]  # Get the cell object
                 # Set the background color based on cell content
                 self.set_cell_background(row, col, 'gray')  # Default cell color
-                # Check if this cell contains the GathererBot
-                if (row, col) == (self.simulation.gatherer_bot.get_y(), self.simulation.gatherer_bot.get_x()):
-                    cell.set_content("gatherer_bot")  # Set the cell content to gatherer_bot
-                else:
-                    cell.set_content("TBC")  # Otherwise, set it to empty
+
+                # Initialize cell content to "TBC"
+                cell.set_content("TBC")  # Set it to empty by default
+
+                # Check for each bot type and update the cell content accordingly
+                for bot in self.simulation.bots:
+                    if (row, col) == (bot.get_y(), bot.get_x()):
+                        cell.set_content(bot.__class__.__name__.lower().replace("bot", "_bot"))
+                        break  # Exit the loop once the bot is found
+
                 # Draw the emoji/text in the center of the cell
                 x1 = col * self.cell_size  # Calculate the top-left x coordinate
                 y1 = row * self.cell_size  # Calculate the top-left y coordinate
@@ -92,6 +97,7 @@ class GUI:
     def recurring_update(self):
         # Update the state of all bots, stations, and parts at regular intervals
         if self.running:
+            print("Updating simulation...")  # Debugging line
             self.simulation.update()  # Update the simulation state
             self.update_display()  # Update the display after all bots have acted
             self.simulation_window.after(1000, self.recurring_update)  # Call this method again after 1000ms

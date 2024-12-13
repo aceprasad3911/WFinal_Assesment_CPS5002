@@ -6,10 +6,11 @@ import techburg_simulation.view.gui3
 
 
 class Agent(ABC):
-    def __init__(self, simulation, grid, x, y):
+    def __init__(self, simulation, grid, x, y, bot_id):
         self.__grid = None
         self.simulation = simulation
         self.__grid = grid  # Store the grid reference
+        self.id = bot_id  # Assign the bot ID
         self._location = [x, y]
         self.__bot_type = "TBC"
         self.__bot_energy = techburg_simulation.controller.config.BOT_INITIAL_ENERGY
@@ -22,7 +23,7 @@ class Agent(ABC):
 
     def _move(self):
         if self.__bot_energy <= 5:
-            print("Not enough energy to move.")
+            print(f"Bot ID {self.id}: Not enough energy to move.")
             return self.__bot_energy
         # Get the current location
         col = self._location[0]  # Use the x-coordinate
@@ -42,7 +43,7 @@ class Agent(ABC):
             self.__grid.set_agent(self, self._location)  # Assuming you have a method to set the agent in the grid
         # Each move depletes bot energy by 5%.
         self.__bot_energy -= 5
-        print("Energy reduced by 5, energy is now at:", self.__bot_energy)
+        print(f"Bot ID {self.id}: Energy reduced by 5, energy is now at: {self.__bot_energy}")
         # techburg_simulation.view.gui3.GUI.update_display(self)
         return self.__bot_energy
 

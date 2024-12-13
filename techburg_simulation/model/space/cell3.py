@@ -12,13 +12,14 @@ class Cell:
             "TBC": "",  # Empty space
             "spare_parts": "",  # Spare parts
             "survivor_bot": "",  # Survivor bot
-            "repair_bot": "",  # Repair bot
+            "repair_bot": "⛑️",  # Repair bot
             "gatherer_bot": "🧺",  # Gatherer bot
             "recharge_station": "",  # Recharge station
             "malfunctioning_drone": "",  # Malfunctioning drone
             "scavenger_swarm": ""  # Scavenger swarm
         }
-        return emoji_key.get(__bot_type, "")  # Default emoji for unknown content
+        emoji = emoji_key.get(__bot_type, "")  # Default emoji for unknown content
+        return emoji
 
     def set_content(self, __bot_type):
         self.__bot_type = __bot_type

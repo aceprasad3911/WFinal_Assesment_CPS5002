@@ -2,20 +2,17 @@
 import random
 
 from techburg_simulation.model.objects.gatherer_bot3 import GathererBot
+from techburg_simulation.model.objects.repair_bot3 import RepairBot
 from techburg_simulation.model.space.grid3 import Grid
 
 
 class Simulation:
     def __init__(self):
         # Initialize simulation parameters
-        self.repair_bot = None
-        self.gatherer_bot = None
-        self.survivor_bot = None
-        self.recharge_station1 = None
-        self.recharge_station2 = None
-        self.recharge_station3 = None
+        self.bots = []  # List to hold all bots
         self.grid = None
         self.techburg_grid_size = 0
+        self.bot_id_counter = 1
 
     def run_simulation(self, grid_size):
         # Perform the simulation logic using the grid_size
@@ -33,11 +30,20 @@ class Simulation:
         pass
 
     def initialize_bot_population(self, grid_size):
-        # random.randint(0, grid_size - 1)
-        x_gatherer1 = 1
-        y_gatherer1 = 1
-        self.gatherer_bot = GathererBot(self, self.grid, x_gatherer1, y_gatherer1)
+        bot_coordinates = [
+            (GathererBot, 25, 25),  # GathererBot at (25, 25)
+            (RepairBot, 5, 5),      # RepairBot at (5, 5)
+            (RepairBot, 15, 15),  # RepairBot at (5, 5)
+        ]
+        for bot_class, x, y in bot_coordinates:
+            self.create_bot(bot_class, x, y)
+
+    def create_bot(self, bot_class, x, y):
+        bot_id = self.bot_id_counter  # Assign the current counter value as the bot ID
+        bot = bot_class(self, self.grid, x, y, bot_id)  # Create a new bot of the specified class with the ID
+        self.bots.append(bot)  # Add the bot to the list of bots
+        self.bot_id_counter += 1  # Increment the counter for the next bot
 
     def update(self):
-        if self.gatherer_bot:
-            self.gatherer_bot.move()  # Call the move method of the GathererBot
+        for bot in self.bots:
+            bot.move()  # Call the move method of each bot
