@@ -1,6 +1,6 @@
 import random
 from abc import abstractmethod, ABC
-from techburg_simulation.model.space.location import Location
+from techburg_simulation.scratch.draft2.location import Location
 import techburg_simulation.controller.config
 
 

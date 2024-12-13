@@ -9,24 +9,23 @@
 # Interacts with Grid to update its state.
 # cell.py
 
-# cell.py
-
 class Cell:
     def __init__(self, content="empty"):
         self.content = content
         self.emoji = self.get_emoji(content)
 
-    def get_emoji(self, content):
+    @staticmethod
+    def get_emoji(content):
         """Return the corresponding emoji for the cell's content."""
         emoji_map = {
             "empty": "",  # Empty space
-            "spare_parts": "🔧",  # Spare parts
-            "survivor_bot": "🤖",  # Survivor bot
-            "repair_bot": "⛑️",  # Repair bot
-            "gatherer_bot": "🪣",  # Gatherer bot
-            "recharge_station": "🔋",  # Recharge station
-            "malfunctioning_drone": "🚁",  # Malfunctioning drone
-            "scavenger_swarm": "🐝"  # Scavenger swarm
+            "spare_parts": "",  # Spare parts
+            "survivor_bot": "",  # Survivor bot
+            "repair_bot": "",  # Repair bot
+            "gatherer_bot": "",  # Gatherer bot
+            "recharge_station": "",  # Recharge station
+            "malfunctioning_drone": "",  # Malfunctioning drone
+            "scavenger_swarm": ""  # Scavenger swarm
         }
         return emoji_map.get(content, "")  # Default emoji for unknown content
 

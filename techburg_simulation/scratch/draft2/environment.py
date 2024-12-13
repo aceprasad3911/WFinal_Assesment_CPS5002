@@ -2,8 +2,8 @@
 # (using the Location class) and the overall simulation state. This class will handle the placement of
 # agents and other entities in the grid.
 from abc import ABC, abstractmethod
-from techburg_simulation.model.objects.abstract_agent import Agent
-from techburg_simulation.model.space.location import Location
+from techburg_simulation.scratch.draft2.abstract_agent import Agent
+from techburg_simulation.scratch.draft2.location import Location
 
 
 class Environment(ABC):

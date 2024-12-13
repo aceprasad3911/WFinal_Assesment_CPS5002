@@ -8,37 +8,38 @@
 # Responsibilities:
 # Manages the overall simulation loop, including initialization, updates, and termination conditions.
 
+import random
 # Interactions:
 # Coordinates interactions between Grid, Bots, RechargeStation, Drone, and ScavengerSwarm.
 # Handles the simulation logic, including movement, energy depletion, and event handling.
 # simulation.py
 import time
-import random
+
 import techburg_simulation.controller.config
-from techburg_simulation.model.objects.gatherer_bot import GathererBot
-from techburg_simulation.model.objects.repair_bot import RepairBot
-from techburg_simulation.model.space.grid import Grid
-from techburg_simulation.model.space.location import Location
-from techburg_simulation.view.gui import Gui  # Import the GUI class
+from techburg_simulation.scratch.draft2.gatherer_bot import GathererBot
+from techburg_simulation.scratch.draft2.cell import Cell
+from techburg_simulation.scratch.draft2.grid import Grid
+from techburg_simulation.scratch.draft2.location import Location
+from techburg_simulation.scratch.draft2.gui import Gui  # Import the GUI class
 
 
 # simulation.py
+
+
 class Simulator:
     def __init__(self) -> None:
-        self.__grid = Grid(techburg_simulation.controller.config.GRID_SIZE, techburg_simulation.controller.config.GRID_SIZE)
+        self.__grid = Grid(techburg_simulation.controller.config.GRID_SIZE, techburg_simulation.controller.config.GRID_SIZE, )
         self.__agents = []
         self.__generate_initial_population()
         self.__is_running = False
-
-        # Define agent colors
-        self.__agent_colours = {
-            RepairBot: "red",
-            GathererBot: "green",
-            # Add colors for other bot types
-        }
+        # Set Cell Content
+        # Set Cell Content
+        self.__cell = Cell("empty")  # Create a cell of type "empty"
+        emoji = self.__cell.get_emoji(self.__cell.content)  # Call the get_emoji method
+        self.__cell.set_content(emoji)  # Set the content to the emoji (if needed)
 
         # Initialize the GUI
-        self.__gui = Gui(self.__grid, self.__agent_colours)
+        self.__gui = Gui(self.__grid)
         self.__gui.render()  # Render the initial state of the GUI
 
     def __generate_initial_population(self) -> None:
@@ -47,15 +48,9 @@ class Simulator:
             # Create and place recharge stations
             pass  # Implement recharge station placement
 
-        for _ in range(techburg_simulation.controller.config.INITIAL_COUNTS["repair_bots"]):
-            location = self.__get_random_free_location()
-            agent = RepairBot(location, self.__grid)  # Pass the grid
-            self.__agents.append(agent)
-            self.__grid.set_agent(agent, location)
-
         for _ in range(techburg_simulation.controller.config.INITIAL_COUNTS["gatherer_bots"]):
             location = self.__get_random_free_location()
-            agent = GathererBot(location, self.__grid)  # Pass the grid
+            agent = GathererBot(location, self.__grid, 29)  # Pass the grid
             self.__agents.append(agent)
             self.__grid.set_agent(agent, location)
 

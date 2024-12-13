@@ -1,4 +1,4 @@
-# main.py: Finally, develop this file to serve as the entry point for your program.
+# main3.py: Finally, develop this file to serve as the entry point for your program.
 # It will import necessary modules and start the simulation.
 
 # Responsibilities:
@@ -11,14 +11,13 @@
 # Uses Grid from grid.py to create the grid structure.
 # Initializes SurvivorBot, RepairBot, GathererBot, RechargeStation, Drone, and ScavengerSwarm as needed.
 
-from techburg_simulation.controller.simulation import Simulator
+from techburg_simulation.view.gui3 import GUI
 
 
 def main():
-    # Create an instance of the Simulator
-    simulation = Simulator()
-    # Run the simulation
-    simulation.run()
+    # Create an instance of the GUI
+    gui = GUI()
+    gui.run()  # Start the GUI event loop
 
 
 if __name__ == "__main__":

@@ -1,5 +1,5 @@
 import tkinter as tk  # Importing the tkinter library for GUI
-from cell import Cell  # Importing the Cell class from cell module
+from techburg_simulation.scratch.draft2.cell import Cell  # Importing the Cell class from cell module
 from techburg_simulation.src.bots.survivor_bot import SurvivorBot  # Importing SurvivorBot from the bots module
 from techburg_simulation.src.bots.repair_bot import RepairBot  # Importing RepairBot from the bots module
 from techburg_simulation.src.bots.gatherer_bot import GathererBot  # Importing GathererBot from the bots module
@@ -17,7 +17,6 @@ class Grid:
         self.canvas = tk.Canvas(self.root, width=techburg_grid_size * techburg_cell_size, height=techburg_grid_size * techburg_cell_size)
         self.canvas.pack()  # Add the canvas to the window
         # Place bots and stations here
-        self.survivor_bot = SurvivorBot(self, 21, 21)  # Place the SurvivorBot at (20, 20)
         self.gatherer_bot = GathererBot(self, 30, 30)  # Place the GathererBot at (30, 30)
         self.repair_bot = RepairBot(self, 10, 10)  # Place the RepairBot at (10, 10)
         self.recharge_station1 = RechargeStation(self, 7, 7)

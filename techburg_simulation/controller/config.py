@@ -2,9 +2,6 @@
 # initial agent counts, energy values, and any other constants needed throughout the simulation.
 # This will provide a centralized place for configuration that can be easily modified.
 
-# Grid Configuration
-GRID_SIZE = 50  # Techburg grid size (50x50 cells)
-
 # Initial Agent Counts
 INITIAL_COUNTS = {
     "recharge_stations": 3,
