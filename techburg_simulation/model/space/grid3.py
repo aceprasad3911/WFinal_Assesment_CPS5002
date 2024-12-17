@@ -1,9 +1,10 @@
 # grid.py
+
+
 class Grid:
     def __init__(self, size):
-        self.grid = None
+        self.simulation = None
         self.size = size
-        self.techburg_grid_size = None
         self.cells = [[None for _ in range(size)] for _ in range(size)]  # Initialize a grid of None
 
     def get_height(self):
@@ -18,9 +19,14 @@ class Grid:
     def clear_agent(self, location):
         self.cells[location[1]][location[0]] = None  # Clear the agent from the grid
 
-    def get_cell(self, row, col):
-        # Ensure that the row and col are within bounds
-        if 0 <= row < self.techburg_grid_size and 0 <= col < self.techburg_grid_size:
-            return self.grid.cells[row][col]  # Access the cell directly
-        else:
-            return None  # Return None if out of bounds
+    def add_agent(self, agent_class, x, y, agent_id):
+        agent = agent_class(self.simulation, self, x, y, agent_id)  # Create the agent
+        self.set_agent(agent, (x, y))  # Place it in the grid
+        return agent
+
+    def move_agent(self, agent):
+        current_x, current_y = agent.get_x(), agent.get_y()
+        agent._move()  # Call the agent's move method
+        new_x, new_y = agent.get_x(), agent.get_y()
+        self.clear_agent((current_x, current_y))  # Clear the old position
+        self.set_agent(agent, (new_x, new_y))  # Set the new position

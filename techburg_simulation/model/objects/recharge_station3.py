@@ -15,6 +15,7 @@
 
 class RechargeStation:
     def __init__(self, simulation, grid, x, y, object_id):
+        self.__grid = None
         self.simulation = simulation
         self.__grid = grid  # Store the grid reference
         self._location = [x, y]  # Store the location
