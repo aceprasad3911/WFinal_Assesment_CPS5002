@@ -1,7 +1,6 @@
 # gui3.py (Functional)
 
 import tkinter as tk  # Import the tkinter module for GUI creation
-import time
 
 from techburg_simulation.controller import config
 from techburg_simulation.controller.simulation3 import Simulation  # Import the Simulation class from the simulation module
@@ -9,7 +8,7 @@ from techburg_simulation.model.objects.bots.malfunction_bot3 import MalfunctionB
 from techburg_simulation.model.objects.bots.repair_bot3 import RepairBot
 from techburg_simulation.model.objects.bots.gatherer_bot3 import GathererBot
 from techburg_simulation.model.objects.bots.scavenger_bot3 import ScavengerBot
-from techburg_simulation.model.objects.recharge_station3 import RechargeStation
+from techburg_simulation.model.objects.recharge_station3 import RechargeStation, RechargeStationPerimeter
 from techburg_simulation.model.objects.spare_part3 import SparePart
 from techburg_simulation.model.space.cell3 import Cell
 
@@ -106,6 +105,7 @@ class GUI:
         self.update_display()  # Initial display update to show the grid
         self.running = True
         self.recurring_update()
+
     def center_dashboard_text(self):
         # Center the text in the dashboard frame
         for widget in self.dashboard_frame.winfo_children():
@@ -132,6 +132,10 @@ class GUI:
                     if (row, col) == (obj.get_y(), obj.get_x()):  # Check if the object's position matches the cell
                         if isinstance(obj, RechargeStation):
                             cell.set_content("recharge_station")  # Set content for recharge station
+                            self.set_cell_background(row, col, 'orange')
+                        elif isinstance(obj, RechargeStationPerimeter):
+                            cell.set_content("recharge_station_perimeter")
+                            self.set_cell_background(row, col, "yellow")
                         elif isinstance(obj, SparePart):
                             cell.set_content("spare_part")  # Set content for GathererBot
                         object_found = True
@@ -190,9 +194,8 @@ class GUI:
         self.root.deiconify()  # Show the main window again
 
 # GUI Branch repository commands:
-# git checkout main
-# git checkout -b gui
+# git checkout development
+# git checkout feature/gui
 # git add "techburg_simulation/view/gui3.py"
 # git commit -m ""
-# git push origin gui
-
+# git push origin feature/gui

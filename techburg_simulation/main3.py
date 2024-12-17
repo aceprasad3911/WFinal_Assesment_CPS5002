@@ -11,6 +11,7 @@
 # Uses Grid from grid.py to create the grid structure.
 # Initializes SurvivorBot, RepairBot, GathererBot, RechargeStation, Drone, and ScavengerSwarm as needed.
 
+# main3.py:
 from techburg_simulation.view.gui3 import GUI
 
 

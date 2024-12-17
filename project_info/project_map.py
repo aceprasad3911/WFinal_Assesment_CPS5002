@@ -1,43 +1,55 @@
-# techburg_simulation/
+# WFinal_Assesment_CPS5002/
 # │
-# ├── src/                         # Source code for the simulation
-# │   ├── __init__.py              # Makes src a package
-# │   ├── main.py                  # Entry point for the simulation
-# │   ├── grid.py                  # Grid class and related methods
-# │   ├── cell.py                  # Cell class representing individual grid cells
-# │   ├── bot/                     # Directory for bot-related classes
-# │   │   ├── __init__.py          # Makes bot a package
-# │   │   ├── survivor_bot.py      # Survivor bot class and logic
-# │   │   ├── repair_bot.py        # Repair bot class (inherits from survivor bot)
-# │   │   ├── gatherer_bot.py      # Gatherer bot class (inherits from survivor bot)
-# │   ├── recharge_station.py       # Recharge station class and logic
-# │   ├── drone.py                 # Malfunctioning drone class and logic
-# │   ├── scavenger_swarm.py       # Scavenger swarm class and logic
-# │   ├── spare_part.py            # Spare part class and logic
-# │   ├── simulation.py             # Simulation control logic
-# │   └── utils.py                 # Utility functions (e.g., random initialization)
+# ├── project_info/               # Directory containing project-related files
+# │   ├── cps5002-assessment-brief.pdf  # PDF document with assessment brief
+# │   ├── project_map.py           # Python script for project mapping
+# │   ├── project_population.py     # Python script for project population
+# │   ├── project_specifications.py  # Python script for project specifications
+# │   └── repo_setup_commands.py    # Python script for repository setup commands
 # │
-# ├── tests/                       # Unit tests for the simulation
-# │   ├── __init__.py              # Makes tests a package
-# │   ├── test_bot.py              # Tests for bot-related functionality
-# │   ├── test_grid.py             # Tests for grid functionality
-# │   ├── test_recharge_station.py  # Tests for recharge station functionality
-# │   ├── test_drone.py            # Tests for drone functionality
-# │   ├── test_scavenger_swarm.py  # Tests for scavenger swarm functionality
-# │   └── test_spare_part.py       # Tests for spare part functionality
-# │
-# ├── docs/                        # Documentation for the project
-# │   ├── index.md                 # Overview of the project
-# │   ├── architecture.md           # System architecture and design decisions
-# │   └── user_guide.md            # Instructions for running the simulation
-# │
-# ├── scripts/                     # Scripts for running simulations or data analysis
-# │   └── run_simulation.py        # Script to run the simulation with parameters
-# │
-# ├── requirements.txt             # List of project dependencies
-# ├── README.md                    # Project overview and setup instructions
-# ├── .gitignore                   # Files and directories to ignore in version control
-# └── setup.py                     # Setup script for packaging the project
+# ├── techburg_simulation/         # Main simulation directory
+# │   ├── controller/              # Controller module for the simulation
+# │   │   ├── __init__.py          # Initialization file for the controller module
+# │   │   ├── config.py            # Configuration settings for the simulation
+# │   │   └── simulation3.py       # Main simulation script
+# │   │
+# │   ├── docs/                    # Documentation directory
+# │   │   ├── architecture.md       # Documentation on the architecture of the project
+# │   │   ├── index.md              # Index or overview documentation
+# │   │   └── user_guide.md         # User guide for the simulation
+# │   │
+# │   ├── model/                   # Model directory for simulation objects
+# │   │   ├── objects/             # Directory for simulation objects
+# │   │   │   ├── __init__.py       # Initialization file for the objects module
+# │   │   │   ├── recharge_station3.py  # Recharge station implementation
+# │   │   │   ├── spare_part3.py    # Spare part implementation
+# │   │   │   └── bots/            # Directory for bot classes
+# │   │   │       ├── __init__.py   # Initialization file for the bots module
+# │   │   │       ├── abstract_agent3.py  # Abstract base class for agents
+# │   │   │       ├── gatherer_bot3.py    # Gatherer bot implementation
+# │   │   │       ├── malfunction_bot3.py  # Malfunction bot implementation
+# │   │   │       ├── repair_bot3.py       # Repair bot implementation
+# │   │   │       └── scavenger_bot3.py    # Scavenger bot implementation
+# │   │   │
+# │   │   └── space/                # Directory for space-related classes
+# │   │       ├── __init__.py       # Initialization file for the space module
+# │   │       ├── cell3.py          # Cell class implementation
+# │   │       ├── environment3.py    # Environment class implementation
+# │   │       ├── grid3.py          # Grid class implementation
+# │   │       └── location3.py      # Location class implementation
+# │   │
+# │   ├── test/                    # Test directory for unit tests
+# │   │   ├── agent_test.py         # Tests for agent classes
+# │   │   └── location_test.py      # Tests for location classes
+# │   │
+# │   ├── view/                    # View directory for visualization
+# │   │   ├── data_analytics3.py    # Data analytics script
+# │   │   └── gui3.py              # GUI script for the simulation
+# │   │
+# │   ├── main3.py                 # Main entry point for the simulation
+# │   │
+# │   └── utils.py                 # Utility functions for the simulation
+#
 # ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------#
 # Notes:
 # src/: This is where all the source code for your simulation will reside. Organizing your code into modules and classes will help you adhere to object-oriented design principles.

@@ -46,9 +46,9 @@ class Simulation:
 
     def initialize_bot_population(self, grid_size):
         bot_coordinates = [
-            (GathererBot, 25, 25),  # GathererBot at (25, 25)
-            (RepairBot, 5, 5),      # RepairBot at (5, 5)
-            (RepairBot, 15, 15),  # RepairBot at (5, 5)
+            (GathererBot, 8, 8),  # GathererBot at (25, 25)
+            (RepairBot, 12, 12),      # RepairBot at (5, 5)
+            (RepairBot, 8, 12),  # RepairBot at (5, 5)
             (MalfunctionBot, 47, 30),
             (ScavengerBot, 14, 35)
         ]
@@ -82,9 +82,9 @@ class Simulation:
             if (current_x, current_y) != (new_x, new_y):
                 self.grid.set_agent(None, (current_x, current_y))  # Clear the old position
 
-# GUI Branch repository commands:
-# git checkout main
-# git checkout -b gui
-# git add "techburg_simulation/view/gui3.py"
+# Simulation Branch repository commands:
+# git checkout development
+# git checkout feature/simulation
+# git add "techburg_simulation/controller/simulation3.py"
 # git commit -m ""
-# git push origin gui
+# git push origin feature/simulation
