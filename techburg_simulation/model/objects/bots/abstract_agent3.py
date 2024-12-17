@@ -12,7 +12,7 @@ class Agent(ABC):
         self.__grid = grid  # Store the grid reference
         self.id = bot_id  # Assign the bot ID
         self._location = [x, y]
-        self.__bot_type = "TBC"
+        self.__object_type = "TBC"
         self.__bot_energy = techburg_simulation.controller.config.BOT_INITIAL_ENERGY
         self.__bot_health = techburg_simulation.controller.config.BOT_INITIAL_HEALTH
         self.__bot_vision = techburg_simulation.controller.config.BOT_INITIAL_VISION
@@ -47,10 +47,41 @@ class Agent(ABC):
         # techburg_simulation.view.gui3.GUI.update_display(self)
         return self.__bot_energy
 
+    def _carry(self):
+        if self.__bot_carry_status == "hands_empty":
+            pass
+
+    def _eat(self):
+        # If energy drops to 5% or below, bots consume parts immediately to restore energy.
+        if self.__bot_energy <= 5 and self.__bot_carry_status == "hands_full":
+            pass
+
+    def _rest(self):
+        # Energy is restored at recharge stations; bots can also rest to regenerate at a rate of 1% per simulation step without consuming parts.
+        pass
+
+    def _charge(self, energy):
+        # Energy is restored at recharge stations; bots can also rest to regenerate at a rate of 1% per simulation step without consuming parts.
+        pass
+
+    def _super_boost(self):
+        # Bots can enhance speed, vision, or energy based on spare parts consumed:
+        # Speed: Default movement occurs every other simulation step; a speed enhancement of 51–100% allows movement every step, with a maximum enhancement of 100%.
+        # Vision: Detects parts in adjacent cells; with 51–100% enhancement, bots detect two cells away, and up to three cells away with 101–150% enhancement. Maximum detection enhancement is 150%.
+        pass
+
+    # @abstractmethod
+    # def _memory(self):
+        # pass
+
+    # @abstractmethod
+    # def act(self):
+        # pass
+
 
 def get_x(self):
-    return self.__location[0]  # Return x-coordinate
+    return self._location[0]  # Return x-coordinate
 
 
 def get_y(self):
-    return self.__location[1]  # Return y-coordinate
+    return self._location[1]  # Return y-coordinate

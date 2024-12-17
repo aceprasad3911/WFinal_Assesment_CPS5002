@@ -2,13 +2,16 @@
 # initial agent counts, energy values, and any other constants needed throughout the simulation.
 # This will provide a centralized place for configuration that can be easily modified.
 
+# Initial Grid Size
+GRID_SIZE = 50
+
 # Initial Agent Counts
 INITIAL_COUNTS = {
     "recharge_stations": 3,
     "repair_bots": 3,
     "gatherer_bots": 2,
-    "scavenger_bots": 4,
-    "drones": 10,
+    "malfunction_bots": 4,
+    "scavenger_bots": 10,
     "spare_parts": 20
 }
 

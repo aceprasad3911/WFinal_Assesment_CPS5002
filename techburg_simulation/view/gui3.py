@@ -188,3 +188,11 @@ class GUI:
         self.running = False  # Set running False to stop the recurring update
         self.simulation_window.destroy()  # Close the simulation window
         self.root.deiconify()  # Show the main window again
+
+# GUI Branch repository commands:
+# git checkout main
+# git checkout -b gui
+# git add "techburg_simulation/view/gui3.py"
+# git commit -m ""
+# git push origin gui
+
