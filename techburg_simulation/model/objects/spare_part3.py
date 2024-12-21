@@ -2,12 +2,15 @@
 
 class SparePart:
     def __init__(self, simulation, grid, x, y, object_id):
-        self.__grid = None
-        self.simulation = simulation
-        self.__grid = grid  # Store the grid reference
+        self._grid = None
+        self._simulation = simulation
+        self._grid = grid  # Store the grid reference
         self._location = [x, y]  # Store the location
-        self.id = object_id  # Assign the bot ID
-        self.__object_type = "spare_part"
+        self._id = object_id  # Assign the bot ID
+        self._object_type = "spare_part"
+
+    def __str__(self):
+        return self._object_type
 
     def get_x(self):
         return self._location[0]  # Return x-coordinate

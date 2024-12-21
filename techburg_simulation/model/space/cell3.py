@@ -1,4 +1,4 @@
-# cell.py
+# cell3.py
 
 class Cell:
     def __init__(self, __bot_type="TBC"):
@@ -9,7 +9,7 @@ class Cell:
     @staticmethod
     def get_emoji(__bot_type):
         emoji_key = {
-            "TBC": "",  # Empty space
+            "empty": "",  # Empty space
             "spare_part": "🔧",  # Spare parts
             "recharge_station": "🔋",  # Recharge station
             "repair_bot": "⛑️",  # Repair bot

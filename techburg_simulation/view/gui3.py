@@ -52,6 +52,7 @@ class GUI:
         tk.Label(self.root, text=f"Number of Recharge Stations: {self.recharge_station_num}").pack()
         tk.Label(self.root, text=f"MalfunctionBot Population: {self.malfunctionbot_population}").pack()
         tk.Label(self.root, text=f"ScavengerBot Population: {self.scavengerbot_population}").pack()
+        # TODO: [Make Setup GUI display dynamic]
         # Create a button that runs the simulation when clicked
         self.run_button = tk.Button(self.root, text="Run Simulation", command=self.run_simulation)
         self.run_button.pack(pady=20)  # Add the button to the main window
@@ -91,6 +92,8 @@ class GUI:
         self.result_label = tk.Label(self.dashboard_frame, text="Dashboard", font=("Arial", 16))
         self.result_label.grid(row=0, column=0, columnspan=2, pady=10)  # Center the title across two columns
 
+        # TODO: [Create continue, pause, stop control pad in dashboard]
+
         # Example of adding more dashboard elements
         self.status_label = tk.Label(self.dashboard_frame, text="Status: Running", font=("Arial", 12))
         self.status_label.grid(row=1, column=0, columnspan=2, pady=5)
@@ -122,8 +125,8 @@ class GUI:
                 cell = self.grid[row][col]  # Get the cell object
                 # Set the background color based on cell content
                 self.set_cell_background(row, col, 'gray')  # Default cell color
-                # Initialize cell content to "TBC"
-                cell.set_content("TBC")  # Set it to empty by default
+                # Initialize cell content to "empty"
+                cell.set_content("empty")  # Set it to empty by default
                 # Initialize a flag to check if an object is found
                 # Initialize a flag to check if an object is found
                 object_found = False

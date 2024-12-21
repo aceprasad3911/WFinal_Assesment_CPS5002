@@ -1,11 +1,12 @@
-# grid.py
+# grid3.py
+from techburg_simulation.model.space.cell3 import Cell
 
 
 class Grid:
     def __init__(self, size):
         self.simulation = None
         self.size = size
-        self.cells = [[None for _ in range(size)] for _ in range(size)]  # Initialize a grid of None
+        self.cells = [[Cell() for _ in range(size)] for _ in range(size)]
 
     def get_height(self):
         return self.size
@@ -24,9 +25,17 @@ class Grid:
         self.set_agent(agent, (x, y))  # Place it in the grid
         return agent
 
+    def remove_agent(self, x, y):
+        # Clear the agent from the specified location
+        self.clear_agent((x, y))
+
     def move_agent(self, agent):
         current_x, current_y = agent.get_x(), agent.get_y()
         agent._move()  # Call the agent's move method
         new_x, new_y = agent.get_x(), agent.get_y()
         self.clear_agent((current_x, current_y))  # Clear the old position
         self.set_agent(agent, (new_x, new_y))  # Set the new position
+
+    def get_cell_content(self, row, col):
+        return self.cells[row][col]  # Return the string content of the specified cell
+        # TODO: [Change structure of method]

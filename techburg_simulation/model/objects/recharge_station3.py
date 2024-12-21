@@ -11,19 +11,21 @@
 # Interacts with SurvivorBot to recharge their energy.
 # Provides methods to store and retrieve SparePart objects.
 
-# recharge_station.py
+# recharge_station3.py
 
 class RechargeStation:
     def __init__(self, simulation, grid, x, y, object_id):
-        self.__grid = None
         self.simulation = simulation
-        self.__grid = grid  # Store the grid reference
+        self._grid = grid  # Store the grid reference
         self._location = [x, y]  # Store the location
         self.id = object_id  # Assign the bot ID
-        self.__object_type = "recharge_station"
+        self._object_type = "recharge_station"
 
         # Create the perimeter around the recharge station
         self.create_perimeter()
+
+    def __str__(self):
+        return self._object_type
 
     def create_perimeter(self):
         # Define the perimeter cells (for example, one cell around the station)
@@ -39,8 +41,8 @@ class RechargeStation:
         ]
 
         for px, py in perimeter_coords:
-            if 0 <= px < self.__grid.size and 0 <= py < self.__grid.size:  # Check bounds
-                perimeter = RechargeStationPerimeter(self.simulation, self.__grid, px, py)
+            if 0 <= px < self._grid.size and 0 <= py < self._grid.size:  # Check bounds
+                perimeter = RechargeStationPerimeter(self.simulation, self._grid, px, py)
                 self.simulation.objects.append(perimeter)  # Add perimeter to the simulation
 
     def get_x(self):
