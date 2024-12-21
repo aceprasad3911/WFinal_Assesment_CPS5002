@@ -1,11 +1,12 @@
 # grid.py
+from techburg_simulation.model.space.cell3 import Cell
 
 
 class Grid:
     def __init__(self, size):
         self.simulation = None
         self.size = size
-        self.cells = [[None for _ in range(size)] for _ in range(size)]  # Initialize a grid of None
+        self.cells = [[Cell() for _ in range(size)] for _ in range(size)]  # Initialize a grid of None
 
     def get_height(self):
         return self.size
